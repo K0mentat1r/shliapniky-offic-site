@@ -1,0 +1,284 @@
+@import url('https://fonts.googleapis.com/css2?family=Arsenal+SC:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: "Monocraft";
+    src: url(minecraftfont/Monocraft.ttf) format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body{
+    margin:0;
+    background-color: #FFC334;
+}
+a{
+    text-decoration: none;
+}
+::-webkit-scrollbar{
+    background-color:#FFC334;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #404146;
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+    background-color: #FFC334;
+}
+p, figcaption, a{
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+
+    font-size: 20px;
+    color:#F4F2D7;
+}
+h1,h2,h3,h4{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color:#F4F2D7;
+}
+h1{
+    font-size: 30px;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #333740;
+}
+.site-logo{
+    transform: rotate(-45deg);
+}
+.header__links{
+    display: flex;
+    gap: calc(10px + 1vw);
+}
+.burger-menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main-header .site-logo{
+    width:150px;
+}
+#main-header .burger-menu{
+    width: 150px;
+}
+#second-header{
+    animation: animSecHeader 0.5s 1 forwards;
+    position: fixed;
+    width: 100%;
+    top:0;
+    display: none;
+}
+#second-header .site-logo{
+    width:80px;
+}
+#second-header .burger-menu{
+    width: 90px;
+    margin-right: 10px;
+}
+main{
+    display: grid;
+    grid-template-columns: calc(30px + 3vw) calc(100% - (60px + 6vw)) calc(30px + 3vw);
+}
+article{
+    background-color: #404146;
+    border-radius: 30px;
+    padding: 10px;
+    margin-top: calc(8px + 0.5vw);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+article:first-child{
+    margin-top: calc(15px + 1vw);
+}
+article:last-child{
+    margin-bottom: calc(15px + 1vw);
+}
+#section-why-we, #section-hall-of-fame, #section-how-to-come-in, #section-FAQ,#section-allies{
+    flex-direction: column;
+}
+#section-hello{
+    justify-content: space-around;
+}
+.section-hello__text,.section-about__text{
+    text-align: end;
+    width: 40vw;
+    font-size: 30px;
+}
+.section-about__text{
+    text-align: start;
+    width: 80%;
+}
+.section-about__name,.section-about__text{
+    padding-left: 5vw;
+}
+.section-hello__img{
+    width: 400px;
+}
+.section-right{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items:center;
+    margin: 0;
+}
+.section-about__img{
+    width: 300px;
+    margin-top: 5px;
+}
+::marker{
+    color: #F4F2D7;
+    display: flex;
+}
+#section-why-we li>p{
+    font-size: 25px;
+    margin: 10px 0;
+}
+.section-HOF__sub-section{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    max-width: 300px;
+}
+.columns-3_rows-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    column-gap: calc(30px + 1vw);
+}
+.section__player-head{
+    width: 200px;
+}
+.section-HOF__sub-section h4, .section-HOF__sub-section p{
+    font-family: "Monocraft";
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+.section-HOF__sub-section h4{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+#discord-invite{
+    height: 60px;
+    width: 270px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color:#27282E;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+#discord-invite:active {
+    background-color: #373841;
+}
+.button__discord-logo{
+    width: 50px;
+}
+.button__text{
+    color:#838894;
+    font-size: 24px;
+}
+#section-FAQ{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.section-FAQ__sub-section{
+    background-color: #5D5E65;
+    width: 80%;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+.sub-section__header{
+    border-bottom: #F4F2D7 3px solid;
+    display: flex;
+    justify-content: space-between;
+}
+.sub-section__open{
+    width: 30px;
+    align-self: end;
+}
+.sub-section__open,.sub-section__question{
+    padding-bottom: 15px;
+}
+.sub-section__question{
+    margin-bottom: 0;
+}
+.onAnimCloseCat{
+    animation: animCloseCat 0.5s 1 forwards;
+}
+.onRevAnimCloseCat{
+    animation: animRevCloseCat 0.5s 1 forwards;
+}
+.onAnimSubCat {
+    animation: animSubCategories 1s 1 forwards; /*было 2s*/
+}
+.onRevAnimSubCat {
+    animation: revAnimSubCategories 0.1s 1 forwards; /*было 0,2s*/
+}
+
+@keyframes animSecHeader {
+    from{
+        transform: translateY(-200px);
+    }
+    to{
+        transform: translateY(0);
+    }
+}
+@keyframes animCloseCat {
+    0%{
+        transform: rotate(0deg);
+        margin-top: 15px;
+    }
+    100%{  
+        transform: rotate(-180deg);
+        margin-bottom: 15px;
+    }
+}
+@keyframes animRevCloseCat {
+    0%{
+        transform: rotate(-180deg);
+        margin-bottom: 15px;
+    }
+    100%{  
+        transform: rotate(0deg);
+        margin-top: 15px;
+    }
+}
+@keyframes revAnimSubCategories{
+    0%{
+        opacity: 100%;
+        height: calc(100% - 120px);
+        display: block;
+    }
+    100%{
+        opacity: 0;
+        height: 0%;
+        display: none;
+    }
+}
+@keyframes animSubCategories{
+    0%{
+        opacity: 0%;
+        height: 0%;
+        display: none;
+    }
+    75%{
+        opacity: 0%;
+        display: none;
+    }
+    100%{
+        display: block;
+        opacity: 100%;
+        height: calc(100% - 120px);
+    }
+}
