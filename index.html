@@ -45,11 +45,18 @@
             </svg>
         </div>
     </header>
+    <div id="menu">
+        <div id="menuContainer">
+            <div id="menuBody">
+
+            </div>
+        </div>
+    </div>
     <main>
         <div class="grid-left"></div>
         <div class="grid-center">
             <article class="section" id="section-hello">
-                <img src="img/pwgod1.png" class="section-hello__img">
+                <img src="img/all_photo.png" class="section-hello__img">
                 <h3 class="section-hello__text">
                     Добро пожаловать на сайт клана ”Шляпники”! Здесь вы можете ознакомится с нашим кланом и узнать о нем больше и, возможно, вступить.
                 </h3>
@@ -57,7 +64,7 @@
             <article class="section" id="section-about">
                 <div class="section-left">
                     <h1 class="section-about__name">
-                        О нас
+                        о нас
                     </h1>
                     <p class="section-about__text">
                         Клан Шляпники - это не просто клан, это место где люди общаются, развиваются, строят, проводят ивенты и не только.
@@ -70,7 +77,7 @@
                 </figure>
             </article>
             <article class="section" id="section-why-we">
-                <h1 class="section__name">Почему нужно выбрать наш клан</h1>
+                <h1 class="section__name">почему нужно выбрать наш клан</h1>
                 <ul class="section__list">
                     <li><p class="section__text">Много различных ферм, на которых вы можете безгранично фармить опыт и ресурсы.</p></li>
                     <li><p class="section__text">Активные игроки в клане.</p></li>
@@ -80,7 +87,7 @@
                 </ul>
             </article>
             <article class="section" id="section-hall-of-fame">
-                <h1 class="section__name">Доска почета</h1>
+                <h1 class="section__name">доска почета</h1>
                 <div class="columns-3_rows-3">
                     <section class="section-HOF__sub-section section__row1" id="sub-section-PWG">
                         <h4 class="section__player-name">PWGood_</h4>
@@ -99,7 +106,7 @@
                     </section>
                     <section class="section-HOF__sub-section section__row2" id="sub-section-Omo">
                         <h4 class="section__player-name">OMOGUAS</h4>
-                        <img src="" id="omoguas" class="section__player-head">
+                        <img src="img/omoguas_head.png" id="omoguas" class="section__player-head">
                         <p class="section__about-player">Созднание кланового трейд холла, создание арта</p>
                     </section>
                     <section class="section-HOF__sub-section section__row2" id="sub-section-Kap">
@@ -109,7 +116,7 @@
                     </section>
                     <section class="section-HOF__sub-section section__row2" id="sub-section-Dar">
                         <h4 class="section__player-name">DarkFoal</h4>
-                        <img src="" id="darkfoal" class="section__player-head">
+                        <img src="img/DarkFoal_head.png" id="darkfoal" class="section__player-head">
                         <p class="section__about-player">оформление клана в дискорде</p>
                     </section>
                     <section class="section-HOF__sub-section section__row3" id="sub-section-Bli">
@@ -131,10 +138,12 @@
             </article>
             <article class="section" id="section-how-to-come-in">
                 <h1 class="section__name">как попасть в наш клан</h1>
-                <button id="discord-invite">
-                    <img src="img/discord-logo.png" class="button__discord-logo">
-                    <p class="button__text">вcтупить в клан</p>
-                </button>
+                <a href="https://discord.gg/rwvFzRJJ" target="_blank">
+                    <button id="discord-invite">
+                        <img src="img/discord-logo.png" class="button__discord-logo">
+                        <p class="button__text">вcтупить в клан</p>
+                    </button>
+                </a>
                 <p class="section__text">
                     1.Вступить в дискорд клана (кнопка выше)<br>
                     2.Открыть канал с заявками в клан <br>
@@ -143,7 +152,7 @@
                 </p>
             </article> 
             <article class="section" id="section-allies">
-                <h1 class="section__name">Наши союзники</h1>
+                <h1 class="section__name">наши союзники</h1>
                 <p class="section__text">Гильдия банкиров (ГБ)</p>
                 <p class="section__text">Семья</p>
             </article>
@@ -261,14 +270,26 @@
     //счетчик
     let headerNum = 0;
     let catHeaderHeight = 62;
+    let maxCatHeaderHeight = 62;
     let wasHeaderNum = 0;
     let CatClosesFirstTime = true;
+    
+    let checkSectionHeaderHeight = function(headerHeight){
+        if (headerHeight > catHeaderHeight){
+            maxCatHeaderHeight = headerHeight;
+            return maxCatHeaderHeight;
+        }
+        else{
+            return catHeaderHeight;
+        }
+    }
 
     function getCategoryHeight(){
         for (let i = 0; i < sub_section.length; i++){
             categoryStyleInfo[i + "_height"] = sub_section[i].offsetHeight - 20;
+            categoryStyleInfo[i + "_headerHeight"] = checkSectionHeaderHeight(sectionHeader[i].offsetHeight);
             categoryStyleInfo[i + "_isOpen"] = false;
-            sub_section.item(i).style.height = catHeaderHeight + "px";
+            sub_section.item(i).style.height = sectionHeader[i].offsetHeight + "px";
             sectionBody[i].style.display = "none";
             // sectionHeader[i].style.borderRadius = "15px";
         }
@@ -299,24 +320,26 @@
         return Math.pow(timeFraction, 2);;
     }
     let EaseOut = makeEaseOut(subAnim);
+
     function onAnimCat(numOfCategory){
         sectionBody[numOfCategory].style.display = "block";
         categoryAnim({
             duration: 1000,
             timing: EaseOut,
             draw: function(progress) {
-                if (progress * categoryStyleInfo[numOfCategory + "_height"] > catHeaderHeight){
+                if (progress * categoryStyleInfo[numOfCategory + "_height"] > categoryStyleInfo[numOfCategory + "_headerHeight"]){
                     sub_section[numOfCategory].style.height = progress * categoryStyleInfo[numOfCategory + "_height"] + "px";
                 }
             }
         });
     }
+
     function onRevAnimCat(numOfCategory){
         categoryAnim({
             duration: 500,
             timing: subAnim,
             draw: function(progress) {
-                sub_section[numOfCategory].style.height = categoryStyleInfo[numOfCategory + "_height"]  - progress * (categoryStyleInfo[numOfCategory + "_height"] - catHeaderHeight) + "px";
+                sub_section[numOfCategory].style.height = categoryStyleInfo[numOfCategory + "_height"]  - progress * (categoryStyleInfo[numOfCategory + "_height"] - categoryStyleInfo[numOfCategory + "_headerHeight"]) + "px";
             }
         });
         sectionBody[numOfCategory].style.display = "none";
@@ -352,7 +375,6 @@
         onAnimations();
     }
     getCategoryHeight();
-    console.log(categoryStyleInfo);
     for (let j = 0; j < btnClose.length; j++){
         let a = j;
         btnClose[j].addEventListener("click", ()=>{
@@ -367,6 +389,8 @@
     const elemMain = document.querySelector("main");
     const windowHeight = document.documentElement.offsetHeight;
     const secondHeader = document.getElementById("second-header");
+    const menu = document.getElementById("menu");
+    const menuContainer = document.getElementById("menuContainer");
 
     let IsSecHeader = false;
     let wasIsSecHeader = false;
@@ -378,6 +402,8 @@
     let userInf = navigator.userAgent;
     let MaybePC = false;
     var IsPC = true;
+    let menuOpen = false;
+    let numOfBurger = 0;
 
     if (window.innerWidth / window.innerHeight > 0.8){
         MaybePC = true;
@@ -396,55 +422,48 @@
         IsPC = false;
         console.log("Пользователь зашел с мобильного устройства");
     }
-    // function onPopUp(){
-    //     stopScrolling = true;
-    //     popUps[popUpNum].style.display="block";
-    //     popUps[popUpNum].classList.add("onPop-up");
-    //     popUps[popUpNum].classList.remove("offPop-up");
-    //     if (IsPC && popUpNum == 1){
-    //         popUpsBody[1].addEventListener("mouseleave", offPopUp);
-    //     }
-    //     else{
-    //         let clicks = 0; //количество кликов. Если убрать, то всплывающие окна не откроются, потому что сразу будут закрываться
-    //         popUpsContainer[popUpNum].onclick = function(event){ //popUpsContainer[popUpNum].addEventListener("click", function(event)
-    //             clicks++;
-    //             if (popUpsBody[popUpNum].contains(event.target)){ //если навелся на вспл. окно
-    //                 clicks=0;
-    //                 closeReg.addEventListener("click", offPopUp);
-    //             }
-    //             else{ //если не навелся
-    //                 if (clicks > 0){
-    //                     clicks=0;
-    //                     offPopUp();
-    //                 }
-    //             }
-    //         };
-    //         // popUpsBody[popUpNum].addEventListener("click", function(event){
-    //         //     if (pop)
-    //         // });
-    //     }
-    // }
+    function offPopUp(num){
+        numOfRepeatOnPopUp=0;
+        menuOpen = false;
+        stopScrolling=false;
+        menuOpen=false;
+        menuBody.classList.remove("onPop-up");
+        menuBody.classList.add("offPop-up");
+        setTimeout(()=>{menu.style.display="none";},500);
+    }
+    let numOfRepeatOnPopUp = 0;
+    function onPopUp(num){
+        numOfRepeatOnPopUp++;
+        numOfBurger = num;
+        stopScrolling = true;
+        menuBody.classList.remove("offPop-up");
+        menuBody.classList.add("onPop-up");
+        menu.style.display="block";
+        if (!menuOpen){
+            menuOpen=true;
+        }
+        else if (menuOpen && numOfRepeatOnPopUp !=2 && numOfRepeatOnPopUp < 2){ //без такого условия меню может закрываться сразу после открытия, что и с ним вполне возможно, но шанс меньше
+            offPopUp(num);
+        }
+        else{
+            numOfRepeatOnPopUp = 0;
+        }
+    }
+
     function isHeader2Visible() {
         let paddingTop = 100; //прибавляется к результату (высчитывается где начало <main>)
         // проверка, где второй хидер
-        if (!IsPC && !MaybePC){ //если мобильное устройство, то второй хижер появляется раньше main
-            paddingTop= -200;
-        }
         return (
             userWinPos <= elemMainTop + paddingTop
         );
     }
-    function numOfPopUp(newt){
-        popUpNum=newt; 
-        // onPopUp();
-    }
     function getNewEventListener(){
         if (IsSecHeader){
-            openMenu[1].addEventListener("click", () => numOfPopUp(1));
+            openMenu[1].addEventListener("click", () => onPopUp(1));
             openMenu[0].removeEventListener("click", function(){});
         }
         else{
-            openMenu[0].addEventListener("click", () => numOfPopUp(1));
+            openMenu[0].addEventListener("click", () => onPopUp(0));
             openMenu[1].removeEventListener("click", function(){});
         }
         
@@ -470,11 +489,14 @@
         userWinPos = window.scrollY; 
         if (!stopScrolling){
             wasUserWinPos = userWinPos;
+            // smoothScroll();
         }
         else{
             window.scrollTo(0, wasUserWinPos); //блокируем прокрутку, если открыто вспл. окно
         }
         checkVisibleMainHeader();
     };
+
 </script>
+<script></script>
 </html>
