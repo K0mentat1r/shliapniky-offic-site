@@ -289,7 +289,7 @@
             categoryStyleInfo[i + "_height"] = sub_section[i].offsetHeight - 20;
             categoryStyleInfo[i + "_headerHeight"] = checkSectionHeaderHeight(sectionHeader[i].offsetHeight);
             categoryStyleInfo[i + "_isOpen"] = false;
-            sub_section.item(i).style.height = sectionHeader[i].offsetHeight + "px";
+            sub_section.item(i).style.height = categoryStyleInfo[i + "_headerHeight"] + "px";
             sectionBody[i].style.display = "none";
             // sectionHeader[i].style.borderRadius = "15px";
         }
