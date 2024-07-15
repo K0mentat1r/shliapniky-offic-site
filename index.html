@@ -294,6 +294,7 @@
             // sectionHeader[i].style.borderRadius = "15px";
         }
     }
+    setTimeout(getCategoryHeight,300);
     // getCategoryHeight();
     function categoryAnim({timing, draw, duration}) {
 
@@ -374,7 +375,6 @@
         headerNum=num;
         onAnimations();
     }
-    getCategoryHeight();
     for (let j = 0; j < btnClose.length; j++){
         let a = j;
         btnClose[j].addEventListener("click", ()=>{
