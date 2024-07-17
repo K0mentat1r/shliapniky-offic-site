@@ -251,6 +251,7 @@ article:last-child{
 .sub-section__open{
     width: 30px;
     align-self: end;
+    cursor: pointer;
 }
 .sub-section__open,.sub-section__question{
     padding-bottom: 15px;

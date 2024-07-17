@@ -289,7 +289,7 @@
             categoryStyleInfo[i + "_height"] = sub_section[i].offsetHeight - 20;
             categoryStyleInfo[i + "_headerHeight"] = checkSectionHeaderHeight(sectionHeader[i].offsetHeight);
             categoryStyleInfo[i + "_isOpen"] = false;
-            sub_section.item(i).style.height = categoryStyleInfo[i + "_headerHeight"] + "px";
+            sub_section[i].style.height = categoryStyleInfo[i + "_headerHeight"] + "px";
             sectionBody[i].style.display = "none";
             // sectionHeader[i].style.borderRadius = "15px";
         }
@@ -403,7 +403,8 @@
     let MaybePC = false;
     var IsPC = true;
     let menuOpen = false;
-    let numOfBurger = 0;
+    let numOfBurger = 1;
+    let wasNumOfBurger = 1;
 
     if (window.innerWidth / window.innerHeight > 0.8){
         MaybePC = true;
@@ -422,32 +423,37 @@
         IsPC = false;
         console.log("Пользователь зашел с мобильного устройства");
     }
-    function offPopUp(num){
-        numOfRepeatOnPopUp=0;
-        menuOpen = false;
+    let repeats = 0; //for functions under this
+
+    function offPopUp(){
         stopScrolling=false;
-        menuOpen=false;
         menuBody.classList.remove("onPop-up");
         menuBody.classList.add("offPop-up");
         setTimeout(()=>{menu.style.display="none";},500);
+        repeats=0;
     }
-    let numOfRepeatOnPopUp = 0;
-    function onPopUp(num){
-        numOfRepeatOnPopUp++;
-        numOfBurger = num;
+    function onPopUp(){
+        repeats++;
         stopScrolling = true;
         menuBody.classList.remove("offPop-up");
         menuBody.classList.add("onPop-up");
         menu.style.display="block";
-        if (!menuOpen){
-            menuOpen=true;
-        }
-        else if (menuOpen && numOfRepeatOnPopUp !=2 && numOfRepeatOnPopUp < 2){ //без такого условия меню может закрываться сразу после открытия, что и с ним вполне возможно, но шанс меньше
-            offPopUp(num);
+    }
+
+    function MenuController(num){
+        numOfBurger =num;
+        if (numOfBurger != wasNumOfBurger){
+            repeats=0;
         }
         else{
-            numOfRepeatOnPopUp = 0;
+            if (repeats == 0){
+                onPopUp();
+            }
+            else if (repeats == 1){
+                offPopUp()
+            }
         }
+        wasNumOfBurger = numOfBurger;
     }
 
     function isHeader2Visible() {
@@ -457,17 +463,7 @@
             userWinPos <= elemMainTop + paddingTop
         );
     }
-    function getNewEventListener(){
-        if (IsSecHeader){
-            openMenu[1].addEventListener("click", () => onPopUp(1));
-            openMenu[0].removeEventListener("click", function(){});
-        }
-        else{
-            openMenu[0].addEventListener("click", () => onPopUp(0));
-            openMenu[1].removeEventListener("click", function(){});
-        }
-        
-    }
+
     function checkVisibleMainHeader(){
         // Проверяем его видимость
         if (!isHeader2Visible()) { //не видно пользователю основной хидер  
@@ -478,11 +474,12 @@
             IsSecHeader = true;
             secondHeader.style.display="none";
         }
-        if (wasIsSecHeader != IsSecHeader){ //если поменялся хидер
-            getNewEventListener();
-        }
         wasIsSecHeader = IsSecHeader;
     }
+
+    openMenu[0].addEventListener("click", () => MenuController(0));
+    openMenu[1].addEventListener("click", () => MenuController(1));
+
     checkVisibleMainHeader();
     let wasUserWinPos = 0; //нужно, чтобы если открылось вспл. окно запомнить последнюю позицию по y
     window.onscroll = function(){
@@ -496,7 +493,6 @@
         }
         checkVisibleMainHeader();
     };
-
 </script>
 <script></script>
 </html>
