@@ -59,11 +59,23 @@ header{
 }
 .burger-menu{
     display: flex;
-    justify-content: center;
     align-items: center;
+    flex-direction: column;
     z-index: 4;
     cursor: pointer;
+    max-width: 35px;
+    max-height: 25px;
+    border-top: #F4F2D7 4px solid;
+    border-bottom: #F4F2D7 4px solid;
 }
+.in-burger{
+    display: flex;
+    width: 100%;
+    background-color: #F4F2D7;
+    height: 4px;
+    margin: 6px 0;
+}
+
 #main-header .site-logo{
     width:150px;
 }
@@ -108,9 +120,9 @@ header{
     height: auto;
 }
 #menuBody{
-    z-index: 3;
-    position: relative;
-    background-color: red;
+    z-index: 5;
+    position: absolute;
+    background-color: #27282E;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -242,6 +254,9 @@ article:last-child{
     border-radius: 20px;
     padding: 10px 20px;
 }
+.section-FAQ__sub-section:last-child{
+    margin-bottom: 30px;
+}
 .sub-section__header{
     border-bottom: #F4F2D7 3px solid;
     display: flex;
@@ -270,6 +285,15 @@ article:last-child{
 }
 .onRevAnimSubCat {
     animation: revAnimSubCategories 0.1s 1 forwards; /*было 0,2s*/
+}
+footer{
+    background-color: #333740;
+    height: max-content;
+    padding: 10px 20px;
+}
+footer a{
+    padding-bottom:1px;
+    border-bottom: 1px solid #F4F2D7;
 }
 
 @keyframes animSecHeader {
@@ -342,6 +366,26 @@ article:last-child{
     }
     100%{
         transform: translateX(calc(100vw + 100px));
+    }
+}
+@keyframes animBurgerMenu1{
+    0%{
+        
+    }
+    50%{
+        height: 4px;
+    }
+    100%{
+        height: 25px;
+        transform: rotate(-45deg);
+    }
+}
+@keyframes animBurgerMenu2{
+    0%{
+        
+    }
+    100%{
+        transform: rotate(45deg);
     }
 }
 @media (max-width: 1235px){

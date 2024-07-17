@@ -22,9 +22,7 @@
             <a href="#section-FAQ" class="links__links-to-sect">FAQ</a>
         </div>
         <div class="burger-menu">
-            <svg width="35" height="25" viewBox="0 0 65 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 22H64.5M0 3H64.5M0 43.5H64.5" stroke="#F4F2D7" stroke-width="5"/>
-            </svg>
+            <div class="in-burger"></div>
         </div>
     </header>
     <header id="second-header">
@@ -40,9 +38,7 @@
             <a href="#section-FAQ" class="links__links-to-sect">FAQ</a>
         </div>
         <div class="burger-menu">
-            <svg width="35" height="25" viewBox="0 0 65 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 22H64.5M0 3H64.5M0 43.5H64.5" stroke="#F4F2D7" stroke-width="5"/>
-            </svg>
+            <div class="in-burger"></div>
         </div>
     </header>
     <div id="menu">
@@ -92,12 +88,17 @@
                     <section class="section-HOF__sub-section section__row1" id="sub-section-PWG">
                         <h4 class="section__player-name">PWGood_</h4>
                         <img src="img/PWGood_head.png" id="pwGoood_" class="section__player-head">
-                        <p class="section__about-player">глава клана</p>
+                        <p class="section__about-player">глава клана, создание фермы золота</p>
                     </section>
                     <section class="section-HOF__sub-section section__row1" id="sub-section-Ini">
                         <h4 class="section__player-name">ini_ga</h4>
                         <img src="" id="ini_ga" class="section__player-head">
                         <p class="section__about-player">дизайн сайта и его создание</p>
+                    </section>
+                    <section class="section-HOF__sub-section section__row3" id="sub-section-Bli">
+                        <h4 class="section__player-name">BLINKS10</h4>
+                        <img src="img/blinks_head.png" id="blinks10" class="section__player-head">
+                        <p class="section__about-player">Модерация в клане, расчищение территории, оформление деревни</p>
                     </section>
                     <section class="section-HOF__sub-section section__row1" id="sub-section-Fut">
                         <h4 class="section__player-name">Future</h4>
@@ -118,11 +119,6 @@
                         <h4 class="section__player-name">DarkFoal</h4>
                         <img src="img/DarkFoal_head.png" id="darkfoal" class="section__player-head">
                         <p class="section__about-player">оформление клана в дискорде</p>
-                    </section>
-                    <section class="section-HOF__sub-section section__row3" id="sub-section-Bli">
-                        <h4 class="section__player-name">BLINKS10</h4>
-                        <img src="img/blinks_head.png" id="blinks10" class="section__player-head">
-                        <p class="section__about-player">добыча ресурсов и оформление деревни</p>
                     </section>
                     <section class="section-HOF__sub-section section__row3" id="sub-section-Puh">
                         <h4 class="section__player-name">Puha</h4>
@@ -255,244 +251,10 @@
         <div class="grid-right"></div>
     </main>
     <footer>
-        
+        <p>No copyright, but there is a link to the repository made by <a href="https://github.com/K0mentat1r/shliapniky-offic-site">ini_ga</a></p>
+        <p>donate to me (задонатить мне): </p>
     </footer>
 </body>
-<script>
-    const sub_section = document.getElementsByClassName("section-FAQ__sub-section");
-    const btnClose = document.getElementsByClassName("sub-section__open");
-    const sectionBody = document.getElementsByClassName("sub-section_answer");
-    const sectionHeader = document.getElementsByClassName("sub-section__header");
-    //переменные размеров
-    let categoryStyleInfo = {};
-    //переменные boolean
-    let IsGetCatHeight = false;
-    //счетчик
-    let headerNum = 0;
-    let catHeaderHeight = 62;
-    let maxCatHeaderHeight = 62;
-    let wasHeaderNum = 0;
-    let CatClosesFirstTime = true;
-    
-    let checkSectionHeaderHeight = function(headerHeight){
-        if (headerHeight > catHeaderHeight){
-            maxCatHeaderHeight = headerHeight;
-            return maxCatHeaderHeight;
-        }
-        else{
-            return catHeaderHeight;
-        }
-    }
-
-    function getCategoryHeight(){
-        for (let i = 0; i < sub_section.length; i++){
-            categoryStyleInfo[i + "_height"] = sub_section[i].offsetHeight - 20;
-            categoryStyleInfo[i + "_headerHeight"] = checkSectionHeaderHeight(sectionHeader[i].offsetHeight);
-            categoryStyleInfo[i + "_isOpen"] = false;
-            sub_section[i].style.height = categoryStyleInfo[i + "_headerHeight"] + "px";
-            sectionBody[i].style.display = "none";
-            // sectionHeader[i].style.borderRadius = "15px";
-        }
-    }
-    setTimeout(getCategoryHeight,300);
-    // getCategoryHeight();
-    function categoryAnim({timing, draw, duration}) {
-
-        let start = performance.now();
-
-        requestAnimationFrame(function categoryAnim(time) {
-        // timeFraction изменяется от 0 до 1
-            let timeFraction = (time - start) / duration;
-            if (timeFraction > 1) timeFraction = 1;
-            // вычисление текущего состояния анимации
-            let progress = timing(timeFraction);
-            draw(progress); // отрисовать её
-            if (timeFraction < 1) {
-                requestAnimationFrame(categoryAnim);
-            }
-        });
-    }
-    function makeEaseOut(timing) {
-      return function(timeFraction) {
-        return 1 - timing(1 - timeFraction);
-      }
-    }
-    function subAnim(timeFraction) {
-        return Math.pow(timeFraction, 2);;
-    }
-    let EaseOut = makeEaseOut(subAnim);
-
-    function onAnimCat(numOfCategory){
-        sectionBody[numOfCategory].style.display = "block";
-        categoryAnim({
-            duration: 1000,
-            timing: EaseOut,
-            draw: function(progress) {
-                if (progress * categoryStyleInfo[numOfCategory + "_height"] > categoryStyleInfo[numOfCategory + "_headerHeight"]){
-                    sub_section[numOfCategory].style.height = progress * categoryStyleInfo[numOfCategory + "_height"] + "px";
-                }
-            }
-        });
-    }
-
-    function onRevAnimCat(numOfCategory){
-        categoryAnim({
-            duration: 500,
-            timing: subAnim,
-            draw: function(progress) {
-                sub_section[numOfCategory].style.height = categoryStyleInfo[numOfCategory + "_height"]  - progress * (categoryStyleInfo[numOfCategory + "_height"] - categoryStyleInfo[numOfCategory + "_headerHeight"]) + "px";
-            }
-        });
-        sectionBody[numOfCategory].style.display = "none";
-    }
-    function animCategoryOpen(num){
-        sectionBody[num].classList.remove("onRevAnimSubCat");
-        btnClose[num].classList.remove("onRevAnimCloseCat")
-
-        onAnimCat(num);
-        sectionBody[num].classList.add("onAnimSubCat");
-        btnClose[num].classList.add("onAnimCloseCat");
-    }
-    function animCategoryClose(num){
-        sectionBody[num].classList.remove("onAnimSubCat");
-        btnClose[num].classList.remove("onAnimCloseCat")
-
-        onRevAnimCat(num);
-        sectionBody[num].classList.add("onRevAnimSubCat");
-        btnClose[num].classList.add("onRevAnimCloseCat")
-    }
-    function onAnimations(){
-        if (categoryStyleInfo[headerNum + "_isOpen"] == false){
-            animCategoryOpen(headerNum);
-            categoryStyleInfo[headerNum + "_isOpen"] = true;
-        }
-        else{
-            animCategoryClose(headerNum);
-            categoryStyleInfo[headerNum + "_isOpen"] = false;
-        }
-    } //возможно придется переделывать, как решим
-    function getHeaderNum(num){
-        headerNum=num;
-        onAnimations();
-    }
-    for (let j = 0; j < btnClose.length; j++){
-        let a = j;
-        btnClose[j].addEventListener("click", ()=>{
-            getHeaderNum(a);
-        });
-    }
-</script>
-<script>
-    let userWinPos = 0;
-
-    const openMenu = document.getElementsByClassName("burger-menu");
-    const elemMain = document.querySelector("main");
-    const windowHeight = document.documentElement.offsetHeight;
-    const secondHeader = document.getElementById("second-header");
-    const menu = document.getElementById("menu");
-    const menuContainer = document.getElementById("menuContainer");
-
-    let IsSecHeader = false;
-    let wasIsSecHeader = false;
-    let stopScrolling = false; //остановить прокрутку?
-
-    let elemMainHeight = elemMain.clientHeight;
-    let elemMainTop = windowHeight - elemMainHeight;
-
-    let userInf = navigator.userAgent;
-    let MaybePC = false;
-    var IsPC = true;
-    let menuOpen = false;
-    let numOfBurger = 1;
-    let wasNumOfBurger = 1;
-
-    if (window.innerWidth / window.innerHeight > 0.8){
-        MaybePC = true;
-        console.log("Возможно, пользователь зашел с пк");
-        if ((userInf.includes("Win") || userInf.includes("Linux")) && !userInf.includes("Android") || userInf.includes("Macbook")){
-            IsPC = true;
-            console.log("Пользователь зашел с пк");
-        }
-        else{
-            MaybePC = false;
-            IsPC = false;
-            console.log("Пользователь зашел с мобильного устройства");
-        }
-    }
-    else{
-        IsPC = false;
-        console.log("Пользователь зашел с мобильного устройства");
-    }
-    let repeats = 0; //for functions under this
-
-    function offPopUp(){
-        stopScrolling=false;
-        menuBody.classList.remove("onPop-up");
-        menuBody.classList.add("offPop-up");
-        setTimeout(()=>{menu.style.display="none";},500);
-        repeats=0;
-    }
-    function onPopUp(){
-        repeats++;
-        stopScrolling = true;
-        menuBody.classList.remove("offPop-up");
-        menuBody.classList.add("onPop-up");
-        menu.style.display="block";
-    }
-
-    function MenuController(num){
-        numOfBurger =num;
-        if (numOfBurger != wasNumOfBurger){
-            repeats=0;
-        }
-        else{
-            if (repeats == 0){
-                onPopUp();
-            }
-            else if (repeats == 1){
-                offPopUp()
-            }
-        }
-        wasNumOfBurger = numOfBurger;
-    }
-
-    function isHeader2Visible() {
-        let paddingTop = 100; //прибавляется к результату (высчитывается где начало <main>)
-        // проверка, где второй хидер
-        return (
-            userWinPos <= elemMainTop + paddingTop
-        );
-    }
-
-    function checkVisibleMainHeader(){
-        // Проверяем его видимость
-        if (!isHeader2Visible()) { //не видно пользователю основной хидер  
-            IsSecHeader = false;
-            secondHeader.style.display="flex";
-
-        } else { //видно
-            IsSecHeader = true;
-            secondHeader.style.display="none";
-        }
-        wasIsSecHeader = IsSecHeader;
-    }
-
-    openMenu[0].addEventListener("click", () => MenuController(0));
-    openMenu[1].addEventListener("click", () => MenuController(1));
-
-    checkVisibleMainHeader();
-    let wasUserWinPos = 0; //нужно, чтобы если открылось вспл. окно запомнить последнюю позицию по y
-    window.onscroll = function(){
-        userWinPos = window.scrollY; 
-        if (!stopScrolling){
-            wasUserWinPos = userWinPos;
-            // smoothScroll();
-        }
-        else{
-            window.scrollTo(0, wasUserWinPos); //блокируем прокрутку, если открыто вспл. окно
-        }
-        checkVisibleMainHeader();
-    };
-</script>
-<script></script>
+<script src="js/sections.js"></script>
+<script src="js/other-script.js"></script>
 </html>
