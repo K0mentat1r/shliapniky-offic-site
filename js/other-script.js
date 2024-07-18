@@ -45,10 +45,10 @@ function offPopUp(){
     stopScrolling=false;
     menuBody.classList.remove("onPop-up");
     menuBody.classList.add("offPop-up");
-    // openMenu.classList.remove("animBurgerCont");
-    // openMenu.classList.add("revAnimBurgerCont");
-    // burger.classList.remove("animBurger");
-    // burger.classList.add("revAnimBurger");
+    openMenu[numOfBurger].classList.remove("animBurgerCont");
+    openMenu[numOfBurger].classList.add("revAnimBurgerCont");
+    burger[numOfBurger].classList.remove("animBurger");
+    burger[numOfBurger].classList.add("revAnimBurger");
     setTimeout(()=>{menu.style.display="none";},500);
     repeats=0;
 }
@@ -58,10 +58,10 @@ function onPopUp(){
     menuBody.classList.remove("offPop-up");
     menuBody.classList.add("onPop-up");
     menu.style.display="block";
-    // openMenu.classList.add("animBurgerCont");
-    // openMenu.classList.remove("revAnimBurgerCont");
-    // burger.classList.add("animBurger");
-    // burger.classList.remove("revAnimBurger");
+    openMenu[numOfBurger].classList.add("animBurgerCont");
+    openMenu[numOfBurger].classList.remove("revAnimBurgerCont");
+    burger[numOfBurger].classList.add("animBurger");
+    burger[numOfBurger].classList.remove("revAnimBurger");
 }
 
 function MenuController(num){
