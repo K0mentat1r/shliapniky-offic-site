@@ -14,8 +14,8 @@ function followMouse(objectName, helpName){ //с элемента, у котор
         elem.onmousemove = function(){ //если курсор находится на элементе
             elemHelp.style.display = "flex";
             elemHelp.style.position = 'fixed';
-            elemHelp.style.left = posX + 'px';
-            elemHelp.style.top = posY + 'px';
+            elemHelp.style.left = posX + 20 + 'px';
+            elemHelp.style.top = posY -20 + 'px';
         }
         elem.onmouseleave = function(){ //если курсор находится вне элемента
             elemHelp.style.display = "none";
