@@ -68,8 +68,10 @@
                     </p>
                 </div>
                 <figure class="section-right">
-                    <img src="img/mascot.png" class="section-about__img">
-                    <figcaption class="section-about__about-img">НАШ МАСКОТ</figcaption>
+                    <img src="img/mascot.png" id="section-about__img" alt="наш маскот" onmouseenter="followMouse('section-about__img', 'mascot-help')"> <!--передаем значения функции, если курсор зашел на элемент-->
+                    <div id="mascot-help" class="img-help"> <!--див, который будем двигать, как подсказку, если курсор на элементе, иначе выключаем его-->
+                        <p id="mascot-help__text" class="img-help__text">наш маскот</p>
+                    </div>
                 </figure>
             </article>
             <article class="section" id="section-why-we">
@@ -255,6 +257,7 @@
         <p>donate to me (задонатить мне): </p>
     </footer>
 </body>
-<script src="js/sections.js"></script>
-<script src="js/other-script.js"></script>
+<script src="js/sections.js"></script> <!--открытие и закрытие секций FAQ-->
+<script src="js/other-script.js"></script> <!--скрипт хидера, анимаций менюшки и т.д.-->
+<script src="js/objectTitle.js"></script> <!--скрипт, отвечающий за подсказки-->
 </html>
