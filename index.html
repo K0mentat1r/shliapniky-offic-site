@@ -44,7 +44,10 @@
     <div id="menu">
         <div id="menuContainer">
             <div id="menuBody">
-
+                <h4> Вообще, это меню, но я не придумал как его заполнить</h4>
+                <button id="startGameBtn">Запустить змейку</button>
+                <p id="game__help">Управление на стрелочки<br>Хочешь остановить игру? Перезагрузи страницу!</p>
+                <canvas id="game" width="300" height="300"></canvas>
             </div>
         </div>
     </div>
@@ -104,7 +107,7 @@
                     </section>
                     <section class="section-HOF__sub-section section__row1" id="sub-section-Fut">
                         <h4 class="section__player-name">Future</h4>
-                        <img src="" id="future" class="section__player-head">
+                        <img src="img/future_head.png" id="future" class="section__player-head">
                         <p class="section__about-player">оформление деревни, созднание кланового трейд холла</p>
                     </section>
                     <section class="section-HOF__sub-section section__row2" id="sub-section-Omo">
@@ -264,4 +267,19 @@
 <script src="js/sections.js"></script> <!--открытие и закрытие секций FAQ-->
 <script src="js/other-script.js"></script> <!--скрипт хидера, анимаций менюшки и т.д.-->
 <script src="js/objectTitle.js"></script> <!--скрипт, отвечающий за подсказки-->
+<script>
+    document.write ('<script src="js/snake.js" ></sc' + 'ript>');
+    startGameBtn.onclick = function(){
+        game__help.style.display = "block";
+        if (IsPC){ 
+            startGameBtn.style.display = "none";
+            game.style.border = "#404146 7px solid";
+            startGame();
+        }
+        else{
+            game__help.textContent = "Сорян, но змейка доступна только на ПК";
+        }
+    }
+    // document.write ('<script src="js/snake.js" ></sc' + 'ript>');
+</script>
 </html>
