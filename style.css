@@ -658,7 +658,7 @@ footer p>a{
         border-radius: 18px 18px 0 0;
     }
     #contactMe-btn2{
-        border-radius: 18px 18px 0 0;
+        border-radius: 0 0 18px 18px;
     }
 
 }
@@ -668,9 +668,6 @@ footer p>a{
     }
     .header__links{
         gap: 7px;
-    }
-    .header__links a{
-        word-spacing: 0%;
     }
     img{
         max-width: 300px;
