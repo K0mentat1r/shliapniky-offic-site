@@ -41,9 +41,9 @@
             <div class="in-burger"></div>
         </div>
     </header>
-    <div id="menu">
-        <div id="menuContainer">
-            <div id="menuBody">
+    <div id="menu" class="popup">
+        <div id="menuContainer" class="popup__container">
+            <div id="menuBody" class="popup__body">
                 <h4> Вообще, это меню, но я не придумал как его заполнить</h4>
                 <button id="startGameBtn">Запустить змейку</button>
                 <p id="game__help">Управление на стрелочки<br>Хочешь остановить игру? Перезагрузи страницу!</p>
@@ -95,16 +95,22 @@
                         <img src="img/PWGood_head.png" id="pwGoood_" class="section__player-head">
                         <p class="section__about-player">глава клана, создание фермы золота</p>
                     </section>
-                    <section class="section-HOF__sub-section section__row1" id="sub-section-Ini">
-                        <h4 class="section__player-name">ini_ga</h4>
-                        <img src="" id="ini_ga" class="section__player-head">
-                        <p class="section__about-player">дизайн сайта и его создание с нуля</p>
-                    </section>
                     <section class="section-HOF__sub-section section__row3" id="sub-section-Bli">
                         <h4 class="section__player-name">BLINKS10</h4>
-                        <img src="img/blinks_head.png" id="blinks10" class="section__player-head">
-                        <p class="section__about-player">Модерация в клане, расчищение территории, оформление деревни</p>
+                        <img src="img/blinks_head.png" id="blinks10" class="section__player-head" onmouseenter="followMouse('blinks10', 'blinks__help')">
+                        <p class="section__about-player">Модерация в клане, оформление деревни</p>
                     </section>
+                    <div id="blinks__help" class="img-help">
+                        <p class="img-help__text">Очень активный. Делает 90% всей работы в клане (модерация)</p>
+                    </div>
+                    <section class="section-HOF__sub-section section__row1" id="sub-section-Ini">
+                        <h4 class="section__player-name">ini_ga</h4>
+                        <img src="img/ini_ga_head.png" id="ini_ga" class="section__player-head" onmouseenter="followMouse('ini_ga', 'ini_ga__help')">
+                        <p class="section__about-player">дизайн сайта и его создание с нуля</p>
+                    </section>
+                    <div id="ini_ga__help" class="img-help">
+                        <p class="img-help__text">У меня другой скин в майнкрафте</p>
+                    </div>
                     <section class="section-HOF__sub-section section__row1" id="sub-section-Fut">
                         <h4 class="section__player-name">Future</h4>
                         <img src="img/future_head.png" id="future" class="section__player-head">
@@ -139,7 +145,7 @@
             </article>
             <article class="section" id="section-how-to-come-in">
                 <h1 class="section__name">КАК ПОПАСТЬ В КЛАН</h1>
-                <a href="https://discord.gg/rwvFzRJJ" target="_blank">
+                <a href="https://discord.gg/HSCxyVBpwy" target="_blank">
                     <button id="discord-invite">
                         <img src="img/discord-logo.png" class="button__discord-logo">
                         <p class="button__text">вcтупить в клан</p>
@@ -176,7 +182,7 @@
                         <img src="img/icon_arrowUp.svg" class="sub-section__open" id="">
                     </div>
                     <p class="section__text sub-section_answer">
-                        Начиная с 3 июля 2024 года игроки с Bedrock Edition (телефонное издание) не принимаются, бывают исключения
+                        Начиная с 3 июля 2024 года игроки с Bedrock Edition (телефонное издание) не принимаются, но бывают исключения
                     </p>
                 </section>
                 <section class="section-FAQ__sub-section" onclick="">
@@ -185,7 +191,7 @@
                         <img src="img/icon_arrowUp.svg" class="sub-section__open" id="">
                     </div>
                     <p class="section__text sub-section_answer">
-                        PWGoood_ не является тем известным лицом о котором вы думаете
+                        PWGoood_ не является тем известным лицом, о котором вы думаете
                     </p>
                 </section>
                 <section class="section-FAQ__sub-section" onclick="">
@@ -203,7 +209,7 @@
                         <img src="img/icon_arrowUp.svg" class="sub-section__open" id="">
                     </div>
                     <p class="section__text sub-section_answer">
-                        Нет, если ваши предпочтения складываются на другую территорию, вы можете жить где хотите
+                        Нет, вы можете жить где хотите
                     </p>
                 </section>
                 <section class="section-FAQ__sub-section" onclick="">
@@ -239,7 +245,7 @@
                         <img src="img/icon_arrowUp.svg" class="sub-section__open" id="">
                     </div>
                     <p class="section__text sub-section_answer">
-                        Да, в таком случае вступить можно. У нас есть новостной канал
+                        Да, в таком случае вступить можно
                     </p>
                 </section>
                 <section class="section-FAQ__sub-section" onclick="">
@@ -256,18 +262,30 @@
         <div class="grid-right"></div>
     </main>
     <footer>
-        <p>No copyright, but there is a link to the repository made by <a href="https://github.com/K0mentat1r/shliapniky-offic-site">ini_ga</a></p>
-        <p>donate to me (задонатить мне): </p>
-        <button id="rickrollBtn" onclick='window.open("https://youtu.be/dQw4w9WgXcQ?si=Q7huZwn_RL35bvtb", "хехехех, зарикроллил", "popup")' onmouseenter="followMouse('rickrollBtn', 'rickrollBtn-help')"></button>
-        <div id="rickrollBtn-help" class="img-help">
-            <p id="rickrollBtn-help__text" class="img-help__text">убер-секретная кнопка, не нажимать!</p>
+        <div class="footer-top">
+            <div><p>No copyright, made by <a id="contactMeToBtn">ini_ga</a></p>
+                <p>donate to me (задонатить мне): 2202208082870099 (Арсений К).<br>Только в комментарий к донату пиши что-нибудь. Спасибо!</p>
+            </div>
+            <div id="contactMeBody">
+                <a href="https://discordapp.com/users/797153328714350703/" target="_blank"><button class="contactMe-btn" id="contactMe-btn1"><img src="img/discord-logo.png" class="button__discord-logo"><h2>Связаться со мной</h2></button></a>
+                <a href="https://github.com/K0mentat1r/shliapniky-offic-site" target="_blank"><button class="contactMe-btn" id="contactMe-btn2"><img src="img/github-logo.svg" class="button__discord-logo"><h2>Репозиторий сайта</h2></button></a>
+            </div>
+        </div>
+        <button id="rickrollBtn" onclick='window.open("https://youtu.be/dQw4w9WgXcQ?si=Q7huZwn_RL35bvtb", "хехехех, зарикроллил", "popup"); rickrollBtn_help__text.textContent ="Я предупреждал";' onmouseenter="followMouse('rickrollBtn', 'rickrollBtn_help')"></button>
+        <div id="rickrollBtn_help" class="img-help">
+            <p id="rickrollBtn_help__text" class="img-help__text">убер-секретная кнопка, не нажимать!</p>
         </div>
     </footer>
 </body>
 <script src="js/sections.js"></script> <!--открытие и закрытие секций FAQ-->
 <script src="js/other-script.js"></script> <!--скрипт хидера, анимаций менюшки и т.д.-->
-<script src="js/objectTitle.js"></script> <!--скрипт, отвечающий за подсказки-->
 <script>
+    if (!IsPC){
+        menuBody.style.minWidth = "300px";
+    }
+</script>
+<script src="js/objectTitle.js"></script> <!--скрипт, отвечающий за подсказки-->
+<script> //включение змейки (она в меню) (код змейки нашел в интернете)
     document.write ('<script src="js/snake.js" ></sc' + 'ript>');
     startGameBtn.onclick = function(){
         game__help.style.display = "block";
@@ -280,6 +298,5 @@
             game__help.textContent = "Сорян, но змейка доступна только на ПК";
         }
     }
-    // document.write ('<script src="js/snake.js" ></sc' + 'ript>');
 </script>
 </html>

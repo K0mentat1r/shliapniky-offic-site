@@ -49,7 +49,7 @@ function offPopUp(){
     openMenu[numOfBurger].classList.add("revAnimBurgerCont");
     burger[numOfBurger].classList.remove("animBurger");
     burger[numOfBurger].classList.add("revAnimBurger");
-    setTimeout(()=>{menu.style.display="none";},500);
+    setTimeout(()=>{menu.style.display="none";},250);
     repeats=0;
 }
 function onPopUp(){
