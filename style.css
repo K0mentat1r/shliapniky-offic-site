@@ -654,14 +654,11 @@ footer p>a{
         display: flex;
         flex-direction: column;
     }
-    .section-hello__img{
-        max-width: 100vw;
-    }
     #contactMe-btn1{
         border-radius: 18px 18px 0 0;
     }
     #contactMe-btn2{
-        border-radius: 0 0 18px 18px ;
+        border-radius: 18px 18px 0 0;
     }
 
 }
@@ -670,7 +667,10 @@ footer p>a{
         display: none;
     }
     .header__links{
-        gap: 5px;
+        gap: 7px;
+    }
+    .header__links a{
+        word-spacing: 0%;
     }
     img{
         max-width: 300px;
