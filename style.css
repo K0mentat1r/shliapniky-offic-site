@@ -564,6 +564,15 @@ footer p>a{
     #contactMeBody{
         flex-direction: column;
     }
+    #contactMe-btn1{
+        border-radius: 18px 18px 0 0;
+    }
+    #contactMe-btn1 h2{
+        padding-right: 8px;
+    }
+    #contactMe-btn2{
+        border-radius: 0 0 18px 18px;
+    }
 }
 @media (max-width: 849px){
     #section-hello, #section-about{
@@ -653,12 +662,6 @@ footer p>a{
     .footer-top{
         display: flex;
         flex-direction: column;
-    }
-    #contactMe-btn1{
-        border-radius: 18px 18px 0 0;
-    }
-    #contactMe-btn2{
-        border-radius: 0 0 18px 18px;
     }
 
 }
